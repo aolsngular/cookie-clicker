@@ -3,10 +3,7 @@ import { Routes } from "@lit-labs/router";
 import { appStyles } from "./assets/css/app.styles";
 import "./components/views/home/home-view";
 import "./components/views/game/game-view";
-import { URL_BASE } from "./components/constants/url";
-
 import { routesComponent } from "./components/Utils/Routes/routes";
-const urlBase = "/cookie-clicker";
 
 export class App extends LitElement {
   static styles = [appStyles];

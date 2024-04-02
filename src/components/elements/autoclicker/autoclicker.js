@@ -16,9 +16,9 @@ export class AutoClicker extends LitElement {
 
   constructor() {
     super();
+    this.currentPoints = 0;
     this.autoClickerCost = AUTOCLICKER.cost_start_points;
     this.autoMergeLevel = 1;
-    this.currentPoints = 0;
   }
 
   _buyAutoclicker() {
