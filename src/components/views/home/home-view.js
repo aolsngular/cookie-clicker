@@ -1,12 +1,12 @@
 import { LitElement, html, css } from "lit";
 import { homeViewStyles } from "./css/home-view.styles";
 import { Routes } from "@lit-labs/router";
-import { routesComponent } from "../../Routes/routes"; // Importa las rutas aquí
-
-const urlBase = "/cookie-clicker";
+import { routesComponent } from "../../Utils/Routes/routes.js";
+import { commonsStyles } from "../../../assets/css/commons.styles";
+import { URL_BASE } from "../../constants/url";
 
 class HomeView extends LitElement {
-  static styles = [homeViewStyles];
+  static styles = [homeViewStyles, commonsStyles];
 
   static properties = {
     userName: { type: String },
@@ -25,7 +25,7 @@ class HomeView extends LitElement {
     e.preventDefault();
     const username = this.userName.trim();
     if (username) {
-      window.location = `${urlBase}/game/${username}`;
+      window.location = `${URL_BASE}/game/${username}`;
     } else {
       alert("Por favor, introduce tu nombre.");
     }

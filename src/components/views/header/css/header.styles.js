@@ -47,4 +47,8 @@ export const headerStyles = css`
     font-size: 18px;
     text-align: center;
   }
+  button {
+    background-color: #262626;
+    border: none;
+  }
 `;

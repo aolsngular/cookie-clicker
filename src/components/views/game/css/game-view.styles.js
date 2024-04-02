@@ -24,19 +24,4 @@ export const gameViewStyles = css`
   .game-points span {
     font-size: 24px;
   }
-  button {
-    width: 100px;
-    padding: 10px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    text-transform: uppercase;
-  }
-
-  button:hover {
-    background-color: #0056b3;
-  }
 `;
