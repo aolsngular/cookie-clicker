@@ -1,7 +1,5 @@
 # Configure and Start up application
 
-For a better experience, open the mobile app and activate your smartphone's sound.
-
 ## Step 1 - clone
 
 Sngular Antonio Olmo Repo - `git clone https://github.com/aolsngular/cookie-clicker`
@@ -29,10 +27,6 @@ If you want to push the changes, you need to execute `git push` and this changes
 ## Step 7 - deploy
 
 For deploy to application in production, the first step is do push in repository of `Github`, after you have wait a one minute, because the actions of github pages will execute and you can see the changes after in `https://aolsngular.github.io/cookie-clicker/`
-
-## Other considerations
-
-- The 'Play' button becomes unnecessary while you are already playing, as clicking it only leads you back to the same screen. A useful feature might be to replace this with a 'Stop' button, allowing you to end the game and view your score.
 
 Link to
 [BBVA Exercise](https://bbvaengineering.github.io/challenges/autoclicker/)

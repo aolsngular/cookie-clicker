@@ -1,14 +1,13 @@
 import { LitElement, html, css, unsafeCSS } from "lit";
 import { Routes } from "@lit-labs/router";
 import { headerStyles } from "./css/header.styles.js";
-import { routesComponent } from "../../Utils/Routes/routes.js";
+import { routesComponent } from "../utils/routes/routes.js";
 import { URL_BASE } from "../../constants/url.js";
 
 class HeaderUser extends LitElement {
   static get properties() {
     return {
       playerName: { type: String },
-      color: { type: String },
     };
   }
   static styles = [headerStyles];
@@ -21,6 +20,7 @@ class HeaderUser extends LitElement {
 
   _exitGame(e) {
     e.preventDefault();
+    // Dispatch event for exit game and save data of user.
     this.dispatchEvent(
       new CustomEvent("exit-game", {
         detail: {
@@ -30,6 +30,7 @@ class HeaderUser extends LitElement {
         composed: true,
       })
     );
+    // Go to home page
     window.location = `${URL_BASE}/`;
   }
 

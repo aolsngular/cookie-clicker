@@ -8,7 +8,9 @@ export class AutoClicker extends LitElement {
 
   static get properties() {
     return {
+      // Cost of buy a one autoclicker
       autoClickerCost: { type: Number },
+      // Level of autoclicker.
       autoMergeLevel: { type: Number },
       currentPoints: { type: Number },
     };
@@ -22,10 +24,13 @@ export class AutoClicker extends LitElement {
   }
 
   _buyAutoclicker() {
+    // Increase the autoMergeLevel
+    this.autoMergeLevel = this.autoMergeLevel + 1;
+    // Update price of autoclicker
     this.autoClickerCost =
       AUTOCLICKER.cost_start_points +
       AUTOCLICKER.cost_start_points * this.autoMergeLevel;
-    this.autoMergeLevel = this.autoMergeLevel + 1;
+    // Dispatch us the event for 'view' can the next steps
     this.dispatchEvent(
       new CustomEvent("autoclicker-on", {
         detail: { autoMergeLevel: this.autoMergeLevel },
@@ -34,8 +39,11 @@ export class AutoClicker extends LitElement {
       })
     );
   }
-  updated(changedProperties) {
-    if (changedProperties.has("currentPoints")) {
+
+  connectedCallback() {
+    super.connectedCallback();
+    // If when start the game, we have points(It's say, exist a user previously), we load the points
+    if (this.currentPoints > 50) {
       this.autoClickerCost =
         AUTOCLICKER.cost_start_points +
         AUTOCLICKER.cost_start_points * this.autoMergeLevel;

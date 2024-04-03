@@ -3,7 +3,7 @@ import { Routes } from "@lit-labs/router";
 import { appStyles } from "./assets/css/app.styles";
 import "./components/views/home/home-view";
 import "./components/views/game/game-view";
-import { routesComponent } from "./components/Utils/Routes/routes";
+import { routesComponent } from "./components/elements/utils/routes/routes";
 
 export class App extends LitElement {
   static styles = [appStyles];

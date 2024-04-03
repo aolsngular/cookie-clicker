@@ -1,7 +1,7 @@
 import { html } from "lit";
-import "../../views/game/game-view";
-import "../../views/home/home-view";
-import { URL_BASE } from "../../constants/url";
+import "../../../views/game/game-view";
+import "../../../views/home/home-view";
+import { URL_BASE } from "../../../constants/url";
 
 export const routesComponent = [
   { path: `${URL_BASE}/`, render: () => html`<home-view></home-view>` },

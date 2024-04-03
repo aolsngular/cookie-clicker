@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit";
 import { homeViewStyles } from "./css/home-view.styles";
 import { Routes } from "@lit-labs/router";
-import { routesComponent } from "../../Utils/Routes/routes.js";
+import { routesComponent } from "../../elements/utils/routes/routes.js";
 import { commonsStyles } from "../../../assets/css/commons.styles";
 import { URL_BASE } from "../../constants/url";
 

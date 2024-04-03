@@ -1,10 +1,10 @@
 import { LitElement, html, css } from "lit";
 import { gameViewStyles } from "./css/game-view.styles";
-import "../header/header";
+import "../../elements/header/header";
 import { AUTOCLICKER } from "../../constants/autoclicker";
 import "../../elements/autoclicker/autoclicker";
 import { commonsStyles } from "../../../assets/css/commons.styles";
-import { playerDataUtil } from "../../Utils/Player/player";
+import { playerDataUtil } from "../../elements/utils/player/player";
 
 class GameView extends LitElement {
   static styles = [gameViewStyles, commonsStyles];
@@ -12,6 +12,7 @@ class GameView extends LitElement {
   static get properties() {
     return {
       playerName: { type: String },
+      // Number of clicks
       count: { type: Number },
       autoMergeLevel: { type: Number },
     };
@@ -22,8 +23,7 @@ class GameView extends LitElement {
     this.playerName = "anonymous";
     this.count = 0;
     this.autoMergeLevel = 0;
-    this.addEventListener("autoclicker-on", this.startAutoClicker.bind(this));
-    this.addEventListener("exit-game", this.handleExitGame.bind(this));
+    this.intervalId = [];
   }
 
   loadInitialPlayerData() {
@@ -32,20 +32,24 @@ class GameView extends LitElement {
       this.playerName = playerData.playerName;
       this.count = playerData.count;
       this.autoMergeLevel = playerData.autoMergeLevel;
-      for (let i = 0; i < this.autoMergeLevel; i++) {
-        setInterval(() => {
-          this.count = this.count + 1;
-        }, 100);
-      }
+      // Start interval with numbers of clickers buys
+      const interval = setInterval(() => {
+        this.count += 1 * this.autoMergeLevel;
+      }, 100);
+      this.intervalId.push(interval);
     }
   }
 
   handleExitGame(e) {
+    // Save data and clear interval
     playerDataUtil.updatePlayer(
       this.playerName,
       this.count,
       this.autoMergeLevel
     );
+    this.intervalId.forEach((key, index) => {
+      clearInterval(this.intervalId[index]);
+    });
   }
 
   _merge() {
@@ -53,10 +57,14 @@ class GameView extends LitElement {
   }
 
   startAutoClicker(e) {
+    // Upload level for the next autoclicker
     this.autoMergeLevel = e.detail.autoMergeLevel;
-    setInterval(() => {
+    // Start a action to count a one point extra(autoclicker on)
+    const interval = setInterval(() => {
       this.count = this.count + 1;
     }, 100);
+    // Save intervals in list to after cleans the interval when the game finish.
+    this.intervalId.push(interval);
   }
 
   updated(changedProperties) {
@@ -66,7 +74,10 @@ class GameView extends LitElement {
   }
   render() {
     return html`
-      <header-user .playerName="${this.playerName}"></header-user>
+      <header-user
+        .playerName="${this.playerName}"
+        @exit-game=${this.handleExitGame}
+      ></header-user>
       <div>
         <h2>Merged pull request: ${this.count}</h2>
         ${this.autoMergeLevel > 0
@@ -84,6 +95,7 @@ class GameView extends LitElement {
               <custom-autoclicker
                 currentPoints=${this.count}
                 autoMergeLevel=${this.autoMergeLevel}
+                @autoclicker-on=${this.startAutoClicker}
               />
             </div>
           `

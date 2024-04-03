@@ -7,6 +7,7 @@ describe("AutoClicker component", () => {
     const component = await fixture(
       html`<custom-autoclicker></custom-autoclicker>`
     );
+    console.log("First step is initialization");
     expect(component.autoClickerCost).to.equal(100);
     expect(component.autoMergeLevel).to.equal(1);
     expect(component.currentPoints).to.equal(0);
