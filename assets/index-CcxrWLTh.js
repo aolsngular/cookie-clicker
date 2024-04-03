@@ -259,7 +259,7 @@ var xt=Object.defineProperty;var Et=(r,t,e)=>t in r?xt(r,t,{enumerable:!0,config
     cursor: pointer;
     transition: border-color 0.25s;
   }
-`;class bt extends m{static get properties(){return{autoClickerCost:{type:Number},autoMergeLevel:{type:Number},currentPoints:{type:Number}}}constructor(){super(),this.currentPoints=0,this.autoClickerCost=x.cost_start_points,this.autoMergeLevel=1}_buyAutoclicker(){this.autoMergeLevel=this.autoMergeLevel+1,this.autoClickerCost=x.cost_start_points+x.cost_start_points*this.autoMergeLevel,this.dispatchEvent(new CustomEvent("autoclicker-on",{detail:{autoMergeLevel:this.autoMergeLevel},bubbles:!0,composed:!0}))}connectedCallback(){super.connectedCallback(),this.currentPoints>50&&(this.autoClickerCost=x.cost_start_points+x.cost_start_points*this.autoMergeLevel)}render(){return f`
+`;class bt extends m{static get properties(){return{autoClickerCost:{type:Number},autoMergeLevel:{type:Number},currentPoints:{type:Number}}}constructor(){super(),this.currentPoints=0,this.autoClickerCost=x.cost_start_points,this.autoMergeLevel=1}_buyAutoclicker(){this.autoMergeLevel=this.autoMergeLevel+1,this.autoClickerCost=x.cost_start_points+x.cost_start_points*this.autoMergeLevel,this.dispatchEvent(new CustomEvent("autoclicker-on",{detail:{autoMergeLevel:this.autoMergeLevel},bubbles:!0,composed:!0}))}connectedCallback(){super.connectedCallback(),this.currentPoints>=50&&(this.autoClickerCost=x.cost_start_points+x.cost_start_points*this.autoMergeLevel)}render(){return f`
       <button
         type="button"
         class="button autoclicker"
