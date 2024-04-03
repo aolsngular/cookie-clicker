@@ -43,7 +43,7 @@ export class AutoClicker extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     // If when start the game, we have points(It's say, exist a user previously), we load the points
-    if (this.currentPoints > 50) {
+    if (this.currentPoints >= 50) {
       this.autoClickerCost =
         AUTOCLICKER.cost_start_points +
         AUTOCLICKER.cost_start_points * this.autoMergeLevel;
